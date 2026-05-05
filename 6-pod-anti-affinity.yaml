@@ -17,7 +17,7 @@ metadata:
     tier: backend
 spec:
   affinity:
-    podAffinity:
+    podAntiAffinity:
       # Hard Rule
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
@@ -30,25 +30,3 @@ spec:
   containers:
   - name: nginx
     image: nginx
----
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: pod-3
-#   labels:
-#     tier: backend
-# spec:
-#   affinity:
-#     podAffinity:
-#       # Hard Rule
-#       requiredDuringSchedulingIgnoredDuringExecution:
-#       - labelSelector:
-#           matchExpressions:
-#           - key: tier
-#             operator: In
-#             values:
-#             - database
-#         topologyKey: topology.kubernetes.io/zone
-#   containers:
-#   - name: nginx
-#     image: nginx
